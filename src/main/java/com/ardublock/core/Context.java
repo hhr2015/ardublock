@@ -19,8 +19,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-import processing.app.Editor;
-
 import com.ardublock.ui.listener.OpenblocksFrameListener;
 
 import edu.mit.blocks.codeblocks.Block;
@@ -52,9 +50,7 @@ public class Context
 	private OsType osType; 
 
 	final public static String APP_NAME = "ArduBlock";
-	
-	private Editor editor;
-	
+		
 	public enum OsType
 	{
 		LINUX,
@@ -178,7 +174,7 @@ public class Context
 		
 		FactoryManager manager = workspace.getFactoryManager();
 		Block newBlock;
-        newBlock = new Block(workspace, "loop", false);
+        newBlock = new Block(workspace, "Network", false);
         FactoryRenderableBlock factoryRenderableBlock = new FactoryRenderableBlock(workspace, manager, newBlock.getBlockID());
         RenderableBlock renderableBlock = factoryRenderableBlock.createNewInstance();
         renderableBlock.setLocation(100, 100);
@@ -285,16 +281,7 @@ public class Context
 			workspaceController.loadProjectFromPath(saveFilePath);
 			didLoad();
 		}
-	}
-	
-	public void setEditor(Editor e) {
-		editor = e;
-	}
-	
-	public Editor getEditor() {
-		return editor;
-	}
-	
+	}	
 	
 	public boolean isInArduino() {
 		return isInArduino;
