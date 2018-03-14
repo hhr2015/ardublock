@@ -26,12 +26,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.ardublock.core.Context;
 import com.ardublock.ui.listener.ArdublockWorkspaceListener;
+import com.ardublock.ui.listener.CheckCodeButtonListener;
 import com.ardublock.ui.listener.GenerateCodeButtonListener;
 import com.ardublock.ui.listener.NewButtonListener;
 import com.ardublock.ui.listener.OpenButtonListener;
 import com.ardublock.ui.listener.OpenblocksFrameListener;
 import com.ardublock.ui.listener.SaveAsButtonListener;
 import com.ardublock.ui.listener.SaveButtonListener;
+import com.ardublock.ui.listener.TestButtonListener;
 
 import edu.mit.blocks.controller.WorkspaceController;
 import edu.mit.blocks.workspace.Workspace;
@@ -88,89 +90,118 @@ public class OpenblocksFrame extends JFrame
 	private void initOpenBlocks()
 	{
 		final Context context = Context.getContext();
-		
-		/*
-		WorkspaceController workspaceController = context.getWorkspaceController();
-		JComponent workspaceComponent = workspaceController.getWorkspacePanel();
-		*/
-		
+
 		final Workspace workspace = context.getWorkspace();
-		
+
 		// WTF I can't add worksapcelistener by workspace contrller
 		workspace.addWorkspaceListener(new ArdublockWorkspaceListener(this));
-		
+
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
+
+		JButton testButton = new JButton("test");
+		testButton.addActionListener(new TestButtonListener(this));
+
 		JButton newButton = new JButton(uiMessageBundle.getString("ardublock.ui.new"));
 		newButton.addActionListener(new NewButtonListener(this));
+		newButton.setToolTipText(uiMessageBundle.getString("ardublock.ui.new.description"));
 		JButton saveButton = new JButton(uiMessageBundle.getString("ardublock.ui.save"));
 		saveButton.addActionListener(new SaveButtonListener(this));
+		saveButton.setToolTipText(uiMessageBundle.getString("ardublock.ui.save.description"));
 		JButton saveAsButton = new JButton(uiMessageBundle.getString("ardublock.ui.saveAs"));
 		saveAsButton.addActionListener(new SaveAsButtonListener(this));
-		JButton openButton = new JButton(uiMessageBundle.getString("ardublock.ui.load"));
+		saveAsButton.setToolTipText(uiMessageBundle.getString("ardublock.ui.saveAs.description"));
+		JButton openButton = new JButton(uiMessageBundle.getString("ardublock.ui.open"));
 		openButton.addActionListener(new OpenButtonListener(this));
-		JButton generateButton = new JButton(uiMessageBundle.getString("ardublock.ui.upload"));
+		openButton.setToolTipText(uiMessageBundle.getString("ardublock.ui.open.description"));
+		JButton checkButton = new JButton(uiMessageBundle.getString("ardublock.ui.check"));
+		checkButton.addActionListener(new CheckCodeButtonListener(this, context));
+		checkButton.setToolTipText(uiMessageBundle.getString("ardublock.ui.check.description"));
+		JButton generateButton = new JButton(uiMessageBundle.getString("ardublock.ui.generate"));
 		generateButton.addActionListener(new GenerateCodeButtonListener(this, context));
+		generateButton.setToolTipText(uiMessageBundle.getString("ardublock.ui.generate.description"));
+
 		JButton saveImageButton = new JButton(uiMessageBundle.getString("ardublock.ui.saveImage"));
-		saveImageButton.addActionListener(new ActionListener () {
+		saveImageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Dimension size = workspace.getCanvasSize();
-				System.out.println("size: " + size);
-				BufferedImage bi = new BufferedImage(2560, 2560, BufferedImage.TYPE_INT_RGB);
-				Graphics2D g = (Graphics2D)bi.createGraphics();
-				double theScaleFactor = (300d/72d);  
-				g.scale(theScaleFactor,theScaleFactor);
-				
+				BufferedImage bi = new BufferedImage(8000, 12500, BufferedImage.TYPE_INT_RGB);
+				Graphics2D g = (Graphics2D) bi.createGraphics();
+				double theScaleFactor = (300d / 72d);
+				g.scale(theScaleFactor, theScaleFactor);
+
 				workspace.getBlockCanvas().getPageAt(0).getJComponent().paint(g);
-				try{
+				try {
 					final JFileChooser fc = new JFileChooser();
 					fc.setSelectedFile(new File("ardublock.png"));
 					int returnVal = fc.showSaveDialog(workspace.getBlockCanvas().getJComponent());
-			        if (returnVal == JFileChooser.APPROVE_OPTION) {
-			            File file = fc.getSelectedFile();
-						ImageIO.write(bi,"png",file);
-			        }
+					if (returnVal == JFileChooser.APPROVE_OPTION) {
+						File file = fc.getSelectedFile();
+						ImageIO.write(bi, "png", file);
+					}
 				} catch (Exception e1) {
-					
+
 				} finally {
 					g.dispose();
 				}
 			}
 		});
 
+		JButton websiteButton = new JButton(uiMessageBundle.getString("ardublock.ui.website"));
+		websiteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				URL url;
+				if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					try {
+						url = new URL("http://ardublock.com");
+						desktop.browse(url.toURI());
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+
+		buttons.add(testButton);
 		buttons.add(newButton);
 		buttons.add(saveButton);
 		buttons.add(saveAsButton);
 		buttons.add(openButton);
 		buttons.add(generateButton);
+		buttons.add(saveImageButton);
+		buttons.add(websiteButton);
 
-		JPanel bottomPanel = new JPanel();
-		JButton websiteButton = new JButton(uiMessageBundle.getString("ardublock.ui.website"));
-		websiteButton.addActionListener(new ActionListener () {
-			public void actionPerformed(ActionEvent e) {
-			    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-			    URL url;
-			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-			        try {
-						url = new URL("http://ardublock.com");
-			            desktop.browse(url.toURI());
-			        } catch (Exception e1) {
-			            e1.printStackTrace();
-			        }
-			    }
-			}
-		});
-		JLabel versionLabel = new JLabel("v " + uiMessageBundle.getString("ardublock.ui.version"));
-		
-		bottomPanel.add(saveImageButton);
-		bottomPanel.add(websiteButton);
-		bottomPanel.add(versionLabel);
-
-		
 		this.add(buttons, BorderLayout.NORTH);
-		this.add(bottomPanel, BorderLayout.SOUTH);
 		this.add(workspace, BorderLayout.CENTER);
 	}
+	
+	
+	
+	
+
+
+	public void doTest() {
+
+		// laod folders and prototxt to <string fileList> map
+		// read block and family proto from file list to genus list
+		// read setting(menu/color/page) from global prototxt
+
+		//generateProto();
+
+		//loadBlocksMapFromDirectory("res/blocks");
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void doOpenArduBlockFile()
 	{
