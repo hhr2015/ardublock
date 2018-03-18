@@ -1,0 +1,51 @@
+block {
+  blockName: "network"
+  blockKind: COMMAND
+  blockColor: "214 169 54"
+  blockLabel: "bg.network"
+  blockArg {
+    isStarter: true
+    isTerminaor: true
+    labelUnique: true
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: BOOLEAN
+    connectorLabel: "type"
+    connectorDefaultArg {
+      defaultArgName: "type_float"
+      defaultArgLabel: "bg.type_float"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: BOOLEAN
+    connectorLabel: "bc.option"
+    connectorDefaultArg {
+      defaultArgName: "type_both"
+      defaultArgLabel: "bg.type_both"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "bc.batch"
+    connectorDefaultArg {
+      defaultArgName: "number"
+      defaultArgLabel: "1000"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "bc.arg_input"
+    connectorDefaultArg {
+      defaultArgName: "number_list"
+      defaultArgLabel: "299"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: CMD
+  }
+}

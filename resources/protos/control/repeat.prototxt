@@ -1,0 +1,20 @@
+block {
+  blockName: "repeat"
+  blockKind: COMMAND
+  blockColor: "214 190 54"
+  blockLabel: "bg.repeat"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "bc.repeat_times"
+    connectorDefaultArg {
+      defaultArgName: "number"
+      defaultArgLabel: "1"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: CMD
+    connectorLabel: "bc.commands"
+  }
+}

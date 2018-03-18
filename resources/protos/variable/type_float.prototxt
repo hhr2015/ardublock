@@ -1,0 +1,18 @@
+block {
+  blockName: "type_float"
+  blockKind: DATA
+  blockColor: "214 169 54"
+  blockLabel: "bg.type_float"
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: BOOLEAN
+    connectorPosition: SINGLE
+  }
+}
+family {
+  refBlockName: "type_float"
+  familyMember {
+    blockName: "type_int9"
+    blockLabel: "bg.type_int9"
+  }
+}

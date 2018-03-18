@@ -12,13 +12,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
@@ -37,6 +38,8 @@ import com.ardublock.ui.listener.TestButtonListener;
 
 import edu.mit.blocks.controller.WorkspaceController;
 import edu.mit.blocks.workspace.Workspace;
+import edu.mit.custom.Utils;
+import edu.mit.custom.BlocksProto.Blocks;
 
 
 public class OpenblocksFrame extends JFrame
@@ -72,12 +75,12 @@ public class OpenblocksFrame extends JFrame
 	{
 		context = Context.getContext();
 		this.setTitle(makeFrameTitle());
-		this.setSize(new Dimension(1024, 760));
+		this.setSize(new Dimension(1024, 768));
 		this.setLayout(new BorderLayout());
 		//put the frame to the center of screen
 		this.setLocationRelativeTo(null);
 		
-		uiMessageBundle = ResourceBundle.getBundle("com/ardublock/block/ardublock");
+		uiMessageBundle = Utils.getLangResourceBundle();
 		
 		fileChooser = new JFileChooser();
 		ffilter = new FileNameExtensionFilter(uiMessageBundle.getString("ardublock.file.suffix"), "abp");
@@ -167,6 +170,7 @@ public class OpenblocksFrame extends JFrame
 		buttons.add(saveButton);
 		buttons.add(saveAsButton);
 		buttons.add(openButton);
+		buttons.add(checkButton);
 		buttons.add(generateButton);
 		buttons.add(saveImageButton);
 		buttons.add(websiteButton);
@@ -181,15 +185,10 @@ public class OpenblocksFrame extends JFrame
 
 
 	public void doTest() {
-
-		// laod folders and prototxt to <string fileList> map
-		// read block and family proto from file list to genus list
-		// read setting(menu/color/page) from global prototxt
-
-		//generateProto();
-
-		//loadBlocksMapFromDirectory("res/blocks");
-
+		System.out.println("doTest()");
+		//Utils.getProtoMapFromDirectory("resources\\protos");
+		//Utils.genBlockProto();
+		//Utils.genSettingProto();
 	}
 	
 	

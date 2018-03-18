@@ -1,0 +1,43 @@
+blockDrawerSet {
+  drawerSetName: "factory"
+  drawerSetType: STACK
+  drawerSetLocation: SOUTHWEST
+  windowPerDrawer: false
+  drawerDraggable: false
+  blockDrawer {
+    drawerName: "bd.variable"
+    buttonColor: "29 152 155"
+    memberName: "number"
+    memberName: "number_single"
+    memberName: "number_list"
+    memberName: "number_float"
+  }
+  blockDrawer {
+    drawerName: "bd.function"
+    buttonColor: "64 109 0"
+  }
+  blockDrawer {
+    drawerName: "bd.ctrl"
+    buttonColor: "93 13 125"
+    memberName: "network"
+    memberName: "type_float"
+    memberName: "layer_def"
+    memberName: "layer_ref"
+    memberName: "multi_serial2"
+    memberName: "multi_parallel2"
+    memberName: "multi_serial"
+    memberName: "multi_parallel"
+  }
+}
+page {
+  drawerWithPage: true
+  page {
+    pageName: "Main"
+    pageWidth: 400
+    pageColor: "128 128 128"
+  }
+}
+trashCan {
+  openTrashCanImage: "resources\\images\\trash_open.png"
+  closeTrashCanImage: "resources\\images\\trash.png"
+}
