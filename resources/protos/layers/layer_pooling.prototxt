@@ -1,0 +1,40 @@
+block {
+  blockName: "layer_pooling_max"
+  blockKind: COMMAND
+  blockColor: "216 5 10"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "x-size"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "3"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "y-size"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "3"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "stride"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "2"
+    }
+  }
+}
+
+
+family {
+  refBlockName: "layer_pooling_max"
+  familyMember {
+    blockName: "layer_pooling_avg"
+  }
+}

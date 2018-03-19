@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javax.swing.JFrame;
 
 import com.ardublock.core.Context;
+import com.ardublock.custom.CodeChecker;
 
 import edu.mit.blocks.workspace.Workspace;
 
@@ -24,8 +25,7 @@ public class CheckCodeButtonListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("check code");
+		CodeChecker.checkCode();
 	}
 
 }

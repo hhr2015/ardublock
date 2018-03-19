@@ -1,8 +1,7 @@
 block {
-  blockName: "type_train"
+  blockName: "option_train"
   blockKind: DATA
   blockColor: "214 169 100"
-  blockLabel: "bg.type_float"
   blockConnector {
     connectorKind: PLUG
     connectorType: BOOLEAN
@@ -10,13 +9,11 @@ block {
   }
 }
 family {
-  refBlockName: "type_train"
+  refBlockName: "option_train"
   familyMember {
-    blockName: "type_both"
-    blockLabel: "bg.type_both"
+    blockName: "option_both"
   }
   familyMember {
-    blockName: "type_forecast"
-    blockLabel: "bg.type_forecast"
+    blockName: "option_forecast"
   }
 }

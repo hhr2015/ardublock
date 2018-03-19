@@ -1,0 +1,14 @@
+block {
+  blockName: "layer_dropout"
+  blockKind: COMMAND
+  blockColor: "216 5 10"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "keep"
+    connectorDefaultArg {
+      defaultArgName: "var_float"
+      defaultArgLabel: "0.8"
+    }
+  }
+}

@@ -99,7 +99,7 @@ public class Context {
 
 		FactoryManager manager = workspace.getFactoryManager();
 		Block newBlock;
-		newBlock = new Block(workspace, "network", false);
+		newBlock = new Block(workspace, "ctrl_network", false);
 		FactoryRenderableBlock factoryRenderableBlock = new FactoryRenderableBlock(workspace, manager,
 				newBlock.getBlockID());
 		RenderableBlock renderableBlock = factoryRenderableBlock.createNewInstance();

@@ -1,0 +1,29 @@
+block {
+  blockName: "ctrl_multi_serial"
+  blockKind: COMMAND
+  blockColor: "255 221 0"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: CMD
+    connectorLabel: "bc.commands"
+  }
+}
+
+family {
+  refBlockName: "ctrl_multi_serial"
+  familyMember {
+    blockName: "ctrl_multi_parallel"
+  }
+  familyMember {
+    blockName: "ctrl_multi_serial2"
+    blockImage {
+      fileLocation: "bi.ctrl_multi_serial2"
+    }
+  }
+  familyMember {
+    blockName: "ctrl_multi_parallel2"
+    blockImage {
+      fileLocation: "bi.ctrl_multi_parallel2"
+    }
+  }
+}

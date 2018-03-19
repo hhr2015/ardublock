@@ -1,8 +1,7 @@
 block {
-  blockName: "network"
+  blockName: "ctrl_network"
   blockKind: COMMAND
   blockColor: "214 169 54"
-  blockLabel: "bg.network"
   blockArg {
     isStarter: true
     isTerminaor: true
@@ -11,10 +10,9 @@ block {
   blockConnector {
     connectorKind: SOCKET
     connectorType: BOOLEAN
-    connectorLabel: "type"
+    connectorLabel: "bc.type"
     connectorDefaultArg {
-      defaultArgName: "type_float"
-      defaultArgLabel: "bg.type_float"
+      defaultArgName: "option_float"
     }
   }
   blockConnector {
@@ -22,8 +20,7 @@ block {
     connectorType: BOOLEAN
     connectorLabel: "bc.option"
     connectorDefaultArg {
-      defaultArgName: "type_both"
-      defaultArgLabel: "bg.type_both"
+      defaultArgName: "option_both"
     }
   }
   blockConnector {
@@ -31,7 +28,7 @@ block {
     connectorType: NUMBER
     connectorLabel: "bc.batch"
     connectorDefaultArg {
-      defaultArgName: "number"
+      defaultArgName: "var_int32"
       defaultArgLabel: "1000"
     }
   }
@@ -40,7 +37,7 @@ block {
     connectorType: NUMBER
     connectorLabel: "bc.arg_input"
     connectorDefaultArg {
-      defaultArgName: "number_list"
+      defaultArgName: "var_int32_list"
       defaultArgLabel: "299"
     }
   }

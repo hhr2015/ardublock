@@ -7,26 +7,47 @@ blockDrawerSet {
   blockDrawer {
     drawerName: "bd.variable"
     buttonColor: "29 152 155"
-    memberName: "number"
-    memberName: "number_single"
-    memberName: "number_list"
-    memberName: "number_float"
-  }
-  blockDrawer {
-    drawerName: "bd.function"
-    buttonColor: "64 109 0"
+    memberName: "var_true"
+    memberName: "var_boolean_list"
+    memberName: "var_int32"
+    memberName: "var_int32_list"
+    memberName: "var_float"
+    memberName: "var_float_list"
+    memberName: "var_string"
+    memberName: "var_string_list"
+    memberName: "var_poly"
+    memberName: "var_poly_list"
   }
   blockDrawer {
     drawerName: "bd.ctrl"
     buttonColor: "93 13 125"
-    memberName: "network"
-    memberName: "type_float"
-    memberName: "layer_def"
-    memberName: "layer_ref"
-    memberName: "multi_serial2"
-    memberName: "multi_parallel2"
-    memberName: "multi_serial"
-    memberName: "multi_parallel"
+    memberName: "ctrl_network"
+    memberName: "option_float"
+    memberName: "option_both"
+    memberName: "ctrl_layer_def"
+    memberName: "ctrl_layer_ref"
+    memberName: "ctrl_shortcut"
+    memberName: "ctrl_shortcut_ref"
+    memberName: "ctrl_multi_serial"
+    memberName: "ctrl_multi_parallel"
+  }
+  blockDrawer {
+    drawerName: "bd.function"
+    buttonColor: "64 109 70"
+    memberName: "fun_relu"
+    memberName: "fun_sigmoid"
+    memberName: "fun_tanh"
+    memberName: "fun_linear"
+  }
+  blockDrawer {
+    drawerName: "bd.layers"
+    buttonColor: "64 109 0"
+    memberName: "layer_full"
+    memberName: "layer_convolution"
+    memberName: "layer_conv_1_1_n"
+    memberName: "layer_pooling_max"
+    memberName: "layer_dropout"
+    memberName: "layer_softmax"
   }
 }
 page {

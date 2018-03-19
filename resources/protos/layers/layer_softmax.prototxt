@@ -1,0 +1,14 @@
+block {
+  blockName: "layer_softmax"
+  blockKind: COMMAND
+  blockColor: "216 5 10"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "count"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "1000"
+    }
+  }
+}

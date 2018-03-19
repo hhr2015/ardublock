@@ -1,0 +1,22 @@
+block {
+  blockName: "var_true"
+  blockKind: DATA
+  blockColor: "205 133 63"
+  blockArg {
+    labelEditable: true
+    labelIsValue: true
+  }
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: BOOLEAN
+    connectorPosition: MIRROR
+  }
+}
+
+
+family {
+  refBlockName: "var_true"
+  familyMember {
+    blockName: "var_false"
+  }
+}

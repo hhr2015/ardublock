@@ -1,0 +1,14 @@
+block {
+  blockName: "var_poly"
+  blockKind: DATA
+  blockColor: "205 133 63"
+  blockArg {
+    labelEditable: true
+    labelIsValue: true
+  }
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: POLY
+    connectorPosition: MIRROR
+  }
+}

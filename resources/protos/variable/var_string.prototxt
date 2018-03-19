@@ -1,0 +1,14 @@
+block {
+  blockName: "var_string"
+  blockKind: DATA
+  blockColor: "205 133 63"
+  blockArg {
+    labelEditable: true
+    labelIsValue: true
+  }
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: STRING
+    connectorPosition: MIRROR
+  }
+}

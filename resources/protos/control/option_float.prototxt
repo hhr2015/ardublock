@@ -1,8 +1,7 @@
 block {
-  blockName: "type_float"
+  blockName: "option_float"
   blockKind: DATA
   blockColor: "214 169 54"
-  blockLabel: "bg.type_float"
   blockConnector {
     connectorKind: PLUG
     connectorType: BOOLEAN
@@ -10,9 +9,8 @@ block {
   }
 }
 family {
-  refBlockName: "type_float"
+  refBlockName: "option_float"
   familyMember {
-    blockName: "type_int9"
-    blockLabel: "bg.type_int9"
+    blockName: "option_int9"
   }
 }

@@ -1,0 +1,22 @@
+block {
+  blockName: "layer_full"
+  blockKind: COMMAND
+  blockColor: "216 5 10"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "out"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "1000"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: STRING
+    connectorLabel: "fun"
+    connectorDefaultArg {
+      defaultArgName: "fun_relu"
+    }
+  }
+}

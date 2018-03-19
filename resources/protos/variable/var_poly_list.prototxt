@@ -1,0 +1,21 @@
+block {
+  blockName: "var_poly_list"
+  blockKind: DATA
+  blockColor: "205 133 63"
+  blockArg {
+    labelEditable: true
+    labelIsValue: true
+  }
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: POLY
+  }
+    blockConnector {
+      connectorKind: SOCKET
+      connectorType: POLY
+      connectorDefaultArg {
+        defaultArgName: "var_poly"
+        defaultArgLabel: "hello"
+      }
+    }
+}

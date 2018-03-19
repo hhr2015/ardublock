@@ -1,0 +1,21 @@
+block {
+  blockName: "var_int32_list"
+  blockKind: DATA
+  blockColor: "205 133 63"
+  blockArg {
+    labelEditable: true
+    labelIsValue: true
+  }
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: NUMBER
+  }
+    blockConnector {
+      connectorKind: SOCKET
+      connectorType: NUMBER
+      connectorDefaultArg {
+        defaultArgName: "var_int32"
+        defaultArgLabel: "299"
+      }
+    }
+}

@@ -1,0 +1,21 @@
+block {
+  blockName: "var_string_list"
+  blockKind: DATA
+  blockColor: "205 133 63"
+  blockArg {
+    labelEditable: true
+    labelIsValue: true
+  }
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: STRING
+  }
+    blockConnector {
+      connectorKind: SOCKET
+      connectorType: STRING
+      connectorDefaultArg {
+        defaultArgName: "var_string"
+        defaultArgLabel: "hello"
+      }
+    }
+}

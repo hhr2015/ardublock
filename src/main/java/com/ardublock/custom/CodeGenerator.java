@@ -21,121 +21,67 @@ import edu.mit.custom.Utils;
 
 public class CodeGenerator {
 
+	private static final String NN_ENTRANCE = "ctrl_network";
+	
 	private static ResourceBundle uiMessageBundle = Utils.getLangResourceBundle();
 
 	public static void genCode(com.ardublock.core.Context context, Workspace workspace, JFrame parentFrame) {
 
-		boolean success;
-		success = true;
+		
+		
+		
+
+		StringBuilder code = new StringBuilder();		
 		Translator translator = new Translator(workspace);
 		translator.reset();
-
+		boolean success = false;
+		
 		Iterable<RenderableBlock> renderableBlocks = workspace.getRenderableBlocks();
+		RenderableBlock entrance = null;
+		
 
+		Set<RenderableBlock> layerDefBlockSet = new HashSet<RenderableBlock>();
+		
+		
+		for(RenderableBlock renderableBlock:renderableBlocks){
+			Block block = renderableBlock.getBlock();
+			// find entrance
+			if(block.getGenusName() == NN_ENTRANCE){
+				if(entrance!= null){
+					context.highlightBlock(renderableBlock);
+					JOptionPane.showMessageDialog(parentFrame,
+							uiMessageBundle.getString("ardublock.translator.exception.multipleentranceFound"), "Error",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				entrance = renderableBlock;
+			}
+			// find layer definition
+			if (block.getGenusName().equals("ctrl_layer_def")) {
+				layerDefBlockSet.add(renderableBlock);
+			}
+		}
+
+		if(entrance == null){
+			JOptionPane.showMessageDialog(parentFrame,
+					uiMessageBundle.getString("ardublock.translator.exception.entrance"), "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		
+		
+		
+		
+		/* TODO **********************************************************************************************/
 		Set<RenderableBlock> loopBlockSet = new HashSet<RenderableBlock>();
 		Set<RenderableBlock> subroutineBlockSet = new HashSet<RenderableBlock>();
 		Set<RenderableBlock> scoopBlockSet = new HashSet<RenderableBlock>();
 		Set<RenderableBlock> guinoBlockSet = new HashSet<RenderableBlock>();
-		StringBuilder code = new StringBuilder();
-
-		for (RenderableBlock renderableBlock : renderableBlocks) {
-			Block block = renderableBlock.getBlock();
-
-			if (block.getGenusName().equals("DuinoEDU_Guino_Read")) {
-				translator.setGuinoProgram(true);
-
-			}
-			if ((block.getGenusName().equals("DuinoEDU_Guino_Title"))
-					|| (block.getGenusName().equals("DuinoEDU_Guino_Slider"))
-					|| (block.getGenusName().equals("DuinoEDU_Guino_column"))
-					|| (block.getGenusName().equals("DuinoEDU_Guino_switch"))
-					|| (block.getGenusName().equals("DuinoEDU_Guino_pause"))) {
-				translator.setGuinoProgram(true);
-
-			}
-
-			if (!block.hasPlug() && (Block.NULL.equals(block.getBeforeBlockID()))) {
-
-				if (block.getGenusName().equals("loop")) {
-					loopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("loop1")) {
-					loopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("loop2")) {
-					loopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("loop3")) {
-					loopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("program")) {
-					loopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("setup")) {
-					loopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("subroutine")) {
-					String functionName = block.getBlockLabel().trim();
-					try {
-						translator.addFunctionName(block.getBlockID(), functionName);
-					} catch (SubroutineNameDuplicatedException e1) {
-						context.highlightBlock(renderableBlock);
-						// find the second subroutine whose name is defined, and
-						// make it highlight. though it cannot happen due to
-						// constraint of OpenBlocks -_-
-						JOptionPane.showMessageDialog(parentFrame,
-								uiMessageBundle.getString("ardublock.translator.exception.subroutineNameDuplicated"),
-								"Error", JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-					subroutineBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("subroutine_var")) {
-					String functionName = block.getBlockLabel().trim();
-					try {
-						translator.addFunctionName(block.getBlockID(), functionName);
-					} catch (SubroutineNameDuplicatedException e1) {
-						context.highlightBlock(renderableBlock);
-						// find the second subroutine whose name is defined, and
-						// make it highlight. though it cannot happen due to
-						// constraint of OpenBlocks -_-
-						JOptionPane.showMessageDialog(parentFrame,
-								uiMessageBundle.getString("ardublock.translator.exception.subroutineNameDuplicated"),
-								"Error", JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-					subroutineBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("scoop_task")) {
-					translator.setScoopProgram(true);
-					scoopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("scoop_loop")) {
-					translator.setScoopProgram(true);
-					scoopBlockSet.add(renderableBlock);
-				}
-				if (block.getGenusName().equals("scoop_pin_event")) {
-					translator.setScoopProgram(true);
-					scoopBlockSet.add(renderableBlock);
-				}
-
-			}
-		}
-		if (loopBlockSet.size() == 0) {
-			JOptionPane.showMessageDialog(parentFrame,
-					uiMessageBundle.getString("ardublock.translator.exception.noLoopFound"), "Error",
-					JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		if (loopBlockSet.size() > 1) {
-			for (RenderableBlock rb : loopBlockSet) {
-				context.highlightBlock(rb);
-			}
-			JOptionPane.showMessageDialog(parentFrame,
-					uiMessageBundle.getString("ardublock.translator.exception.multipleLoopFound"), "Error",
-					JOptionPane.ERROR_MESSAGE);
-			return;
-		}
+		/* TODO **********************************************************************************************/
+		
+	
+		
 
 		try {
 
@@ -209,6 +155,13 @@ public class CodeGenerator {
 					JOptionPane.ERROR_MESSAGE);
 
 		}
+		
+		
+		/* TODO **********************************************************************************************/
+		
+		
+		
+		
 
 		if (success) {
 			AutoFormat formatter = new AutoFormat();

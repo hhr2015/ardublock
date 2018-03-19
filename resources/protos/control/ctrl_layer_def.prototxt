@@ -1,18 +1,17 @@
 block {
-  blockName: "layer_def"
+  blockName: "ctrl_layer_def"
   blockKind: COMMAND
   blockColor: "26 97 218"
-  blockLabel: "bg.layer_def"
   blockArg {
     isStarter: true
     isTerminaor: true
   }
   blockConnector {
     connectorKind: SOCKET
-    connectorType: NUMBERLIST
-    connectorLabel: "ID"
+    connectorType: STRING
+    connectorLabel: "bc.id"
     connectorDefaultArg {
-      defaultArgName: "number_single"
+      defaultArgName: "var_string"
       defaultArgLabel: "FFFF"
     }
   }

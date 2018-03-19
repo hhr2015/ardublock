@@ -424,14 +424,18 @@ public class OpenblocksFrame extends JFrame
 	
 	private File checkFileSuffix(File saveFile)
 	{
-		String filePath = saveFile.getAbsolutePath();
-		if (filePath.endsWith(".abp"))
-		{
-			return saveFile;
-		}
-		else
-		{
-			return new File(filePath + ".abp");
+		if(saveFile != null){
+			String filePath = saveFile.getAbsolutePath();
+			if (filePath.endsWith(".abp"))
+			{
+				return saveFile;
+			}
+			else
+			{
+				return new File(filePath + ".abp");
+			}
+		}else {
+			return null;
 		}
 	}
 }

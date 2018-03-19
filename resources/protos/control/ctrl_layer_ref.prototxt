@@ -1,13 +1,12 @@
 block {
-  blockName: "layer_ref"
+  blockName: "ctrl_layer_ref"
   blockKind: COMMAND
   blockColor: "26 97 218"
-  blockLabel: "bg.layer_ref"
   blockConnector {
     connectorKind: SOCKET
-    connectorType: NUMBERLIST
+    connectorType: STRING
     connectorDefaultArg {
-      defaultArgName: "number_single"
+      defaultArgName: "var_string"
       defaultArgLabel: "FFFF"
     }
   }

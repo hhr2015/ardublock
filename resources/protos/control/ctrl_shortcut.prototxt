@@ -1,0 +1,29 @@
+block {
+  blockName: "ctrl_shortcut"
+  blockKind: COMMAND
+  blockColor: "214 169 54"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: STRING
+    connectorLabel: "bc.id"
+    connectorDefaultArg {
+      defaultArgName: "var_string"
+      defaultArgLabel: "3F"
+    }
+  }
+}
+family {
+  refBlockName: "ctrl_shortcut"
+  familyMember {
+    blockName: "ctrl_shortcut_ref"
+    blockConnector {
+      connectorKind: SOCKET
+      connectorType: STRING
+      connectorLabel: "bc.id_ref"
+      connectorDefaultArg {
+        defaultArgName: "var_string"
+        defaultArgLabel: "3F"
+      }
+    }
+  }
+}

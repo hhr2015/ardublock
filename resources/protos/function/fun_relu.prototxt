@@ -1,0 +1,26 @@
+block {
+  blockName: "fun_relu"
+  blockKind: DATA
+  blockColor: "214 169 54"
+  blockArg {
+    labelEditable: true
+    labelIsValue: true
+  }
+  blockConnector {
+    connectorKind: PLUG
+    connectorType: STRING
+    connectorPosition: MIRROR
+  }
+}
+family {
+  refBlockName: "fun_relu"
+  familyMember {
+    blockName: "fun_sigmoid"
+  }
+  familyMember {
+    blockName: "fun_tanh"
+  }
+  familyMember {
+    blockName: "fun_linear"
+  }
+}

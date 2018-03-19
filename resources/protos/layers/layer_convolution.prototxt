@@ -1,0 +1,98 @@
+block {
+  blockName: "layer_convolution"
+  blockKind: COMMAND
+  blockColor: "216 5 10"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "x-size"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "3"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "y-size"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "3"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "stride"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+      defaultArgLabel: "1"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "count"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: STRING
+    connectorLabel: "fun"
+    connectorDefaultArg {
+      defaultArgName: "fun_relu"
+    }
+  }
+}
+
+
+
+
+block {
+  blockName: "layer_conv_1_1_n"
+  blockKind: COMMAND
+  blockColor: "216 5 10"
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: NUMBER
+    connectorLabel: "count"
+    connectorDefaultArg {
+      defaultArgName: "var_int32"
+    }
+  }
+  blockConnector {
+    connectorKind: SOCKET
+    connectorType: STRING
+    connectorLabel: "fun"
+    connectorDefaultArg {
+      defaultArgName: "fun_relu"
+    }
+  }
+}
+
+
+
+
+family {
+  refBlockName: "layer_conv_1_1_n"
+  familyMember {
+    blockName: "layer_conv_3_1_n"
+  }
+  familyMember {
+    blockName: "layer_conv_3_2_n"
+  }
+  familyMember {
+    blockName: "layer_conv_5_1_n"
+  }
+  familyMember {
+    blockName: "layer_conv_5_2_n"
+  }
+  familyMember {
+    blockName: "layer_conv_5_3_n"
+  }
+  familyMember {
+    blockName: "layer_conv_3_2_n"
+  }
+}
